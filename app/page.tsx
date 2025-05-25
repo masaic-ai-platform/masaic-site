@@ -89,15 +89,15 @@ export default function Home() {
             transition={{ duration: 2, ease: "easeInOut" }}
           >
             <motion.h1
-              className="font-mono text-4xl font-light tracking-[1.5rem] text-white/80"
-              initial={{ letterSpacing: "0.5rem" }}
-              animate={{ letterSpacing: "1.5rem" }}
+              className="font-mono text-4xl font-light tracking-[1.5rem] text-white/80 text-center"
+              initial={{ letterSpacing: "0.5rem", x: "0.8rem" }}
+              animate={{ letterSpacing: "1.5rem", x: "0.8rem" }}
               transition={{ duration: 3, ease: "easeOut" }}
             >
               MASAIC
             </motion.h1>
             <motion.div
-              className="mt-2 text-xs font-light tracking-widest"
+              className="mt-2 text-xs font-light tracking-widest text-center"
               style={{ color: "#AAB4D4" }}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
