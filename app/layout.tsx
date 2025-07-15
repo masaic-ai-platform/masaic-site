@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     description: "High Agency Systems",
     images: [
       {
-        url: '/Masaic-og-Image.png',
+        url: 'https://masaic.ai/Masaic-og-Image.png',
         width: 1200,
         height: 630,
         alt: 'MASAIC | Intelligence Assembled'
