@@ -38,7 +38,7 @@ export default function Home() {
 
   const handleNotifyClick = () => {
     window.location.href =
-      "mailto:aj@masaic.ai?subject=Notify%20me%20about%20Masaic&body=I'd%20like%20to%20be%20notified%20when%20Masaic%20launches."
+     "mailto:aj@masaic.ai?subject=Join%20the%20Pilot&body=Hi%2C%20I'm%20interested%20in%20joining%20the%20Masaic%20pilot.%20Here's%20the%20outcome%20I'm%20envisioning%20for%20my%20team%20and%20our%20business%3A%20"
   }
 
   return (
@@ -60,9 +60,19 @@ export default function Home() {
         )}
       </AnimatePresence>
 
-      {/* Typing sequence - centered on black screen */}
+      {/* Typing sequence - centered where MASAIC will appear */}
       <AnimatePresence>
-        {showTyping && !typingComplete && <TypingSequence onComplete={handleTypingComplete} />}
+        {showTyping && !typingComplete && (
+          <motion.div
+            className="absolute z-10 flex h-full w-full flex-col items-center justify-center"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            <TypingSequence onComplete={handleTypingComplete} />
+          </motion.div>
+        )}
       </AnimatePresence>
 
       {/* Node network visualization - only after typing is complete */}
@@ -79,7 +89,7 @@ export default function Home() {
         )}
       </AnimatePresence>
 
-      {/* Title - only shows after constellation appears */}
+      {/* Title - only shows after constellation appears, in same position as typing */}
       <AnimatePresence>
         {showTitle && (
           <motion.div
@@ -128,37 +138,49 @@ export default function Home() {
         )}
       </AnimatePresence>
 
-      {/* Tagline and Notify button - only show after everything is complete */}
+      {/* Tagline and Notify button - always visible */}
       <AnimatePresence>
-        {showTitle && (
+        {showTyping && (
           <motion.div
-            className="absolute bottom-12 right-8 z-10 text-right sm:bottom-12 xs:bottom-20 max-sm:bottom-24"
+            className="absolute bottom-4 left-1/2 transform -translate-x-1/2 z-10 text-center sm:bottom-12 xs:bottom-20 max-sm:bottom-24"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 2, delay: 2 }}
+            transition={{ duration: 2, delay: 1 }}
           >
-            <div className="font-mono text-sm text-white/60 mb-3">
-              <div>In quiet, we build.</div>
-              <div>For teams who won't settle.</div>
-            </div>
-            <button
-              onClick={handleNotifyClick}
-              className="font-mono text-xs tracking-wider text-white/80 border border-white/30 px-4 py-2 hover:bg-white/10 transition-colors duration-300"
-            >
-              [Notify me]
-            </button>
+<div className="font-mono text-sm text-white/60 mb-3 text-center px-4">
+  <div className="mb-2">
+    <span className="block sm:inline">Piloting quietly</span>
+    <span className="block sm:inline whitespace-nowrap"> with top tier enterprise teams.</span>
+  </div>
+  <div>
+    <span className="whitespace-nowrap">Those driven by outcomes and the long term.</span>
+  </div>
+  
+<button
+  onClick={handleNotifyClick}
+  className="mt-5 relative group font-mono text-xs tracking-wider text-white/80 px-4 py-2 border border-white/30 overflow-hidden"
+>
+  <span className="relative z-10">[Join the Pilot]</span>
+  <span className="absolute inset-0 border border-white/60 animate-glow-border pointer-events-none"></span>
+</button>
+
+</div>
+
+
+
+       
           </motion.div>
         )}
       </AnimatePresence>
 
-      {/* Copyright footer - only show after everything is complete */}
+      {/* Copyright footer - always visible */}
       <AnimatePresence>
-        {showTitle && (
+        {showTyping && (
           <motion.div
             className="absolute bottom-4 left-0 right-0 z-10 text-center"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 2, delay: 2 }}
+            transition={{ duration: 2, delay: 1 }}
           >
             <p className="text-xs tracking-wider text-white/40">© 2025 Masaic AI. All rights reserved.</p>
           </motion.div>
